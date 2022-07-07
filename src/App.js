@@ -15,20 +15,24 @@ class App extends Component {
     }
   };
   
-  
-
+  // SearchFunction is invoke immediately after the component is mounted
   componentDidMount() {
+    this.searchFunction();
+  }
+
+  // Fetching the data
+  searchFunction = (query = 'dogs') => {
     const apiKey = "2ed4de34d46523ba619a652110d5a44f"
-    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=cat&perpage=24&format=json&nojsoncallback=1`)
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then((response) => {
-      console.log(response.data.photos.photo)
+      this.setState({
+        photos: response.data.photos.photo
+      })
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error);
     })
   }
-
-  search
 
   render() {
     return (
@@ -38,7 +42,7 @@ class App extends Component {
         <div className="photo-container">
         <h2>Results</h2>
         <ul>
-          <Photo />
+          <Photo data={this.state.photos}/>
           <NotFound />
         </ul>
         </div>
