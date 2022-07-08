@@ -22,9 +22,9 @@ class Nav extends Component {
       return(
         <nav className="main-nav">
         <ul>
-          <li><NavLink onClick={this.handleClick} exact to="/cats">Cats</NavLink></li>
-          <li><NavLink exact to="/dogs">Dogs</NavLink></li>
-          <li><NavLink exact to="/pandas">Computers</NavLink></li>
+          <li><NavLink onClick={this.handleClick} exact to="/search/cats">Cats</NavLink></li>
+          <li><NavLink exact to="/search/dogs">Dogs</NavLink></li>
+          <li><NavLink exact to="/search/pandas">Computers</NavLink></li>
         </ul>
       </nav>
     ); 

@@ -46,6 +46,7 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" render={ () => < ContainerPhotos data={this.state.photos} />} />
+            <Route exact path="/" render={ () => < ContainerPhotos data={this.state.photos} />} />
           </Switch>
 
 
