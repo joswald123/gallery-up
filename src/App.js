@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-import Nav from './components/Nav'
+import { BrowserRouter, Route } from 'react-router-dom';
+
+//pgk
 import axios from 'axios';
+
+// Components
+import Nav from './components/Nav'
 import SearchForm from './components/SearchForm';
-import Photo from './components/Photo';
-import NotFound from './components/NotFound';
+import ContainerPhotos from './components/ContainerPhotos';
 
 
 class App extends Component {
   
-  constructor() {
-    super();
-    this.state = {
-      photos: []
-    }
-  };
-  
+  state = {
+    photos: []
+  }
+ 
   // SearchFunction is invoke immediately after the component is mounted
   componentDidMount() {
     this.searchFunction();
   }
 
   // Fetching the data
-  searchFunction = (query = 'dogs') => {
+  searchFunction = (query = "dogs") => {
     const apiKey = process.env.REACT_APP_FLICKR_KEY
     axios.get(`${process.env.REACT_APP_FLICKR_URL}search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then((response) => {
@@ -36,17 +37,18 @@ class App extends Component {
 
   render() {
     return (
+      <BrowserRouter>
       <div className="container">
-        <SearchForm />
+        <SearchForm onSearch={this.searchFunction}/>
         <Nav />
         <div className="photo-container">
         <h2>Results</h2>
         <ul>
-          <Photo data={this.state.photos}/>
-          <NotFound />
+          <ContainerPhotos data={this.state.photos}/>
         </ul>
         </div>
       </div>
+      </BrowserRouter>
     );
   }
  
