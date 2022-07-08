@@ -22,8 +22,8 @@ class App extends Component {
 
   // Fetching the data
   searchFunction = (query = 'dogs') => {
-    const apiKey = "2ed4de34d46523ba619a652110d5a44f"
-    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+    const apiKey = process.env.REACT_APP_FLICKR_KEY
+    axios.get(`${process.env.REACT_APP_FLICKR_URL}search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then((response) => {
       this.setState({
         photos: response.data.photos.photo
