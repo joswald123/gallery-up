@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Switch } from 'react-router-dom';
 
 //pgk
 import axios from 'axios';
@@ -13,7 +13,8 @@ import ContainerPhotos from './components/ContainerPhotos';
 class App extends Component {
   
   state = {
-    photos: []
+    photos: [],
+    query: ""
   }
  
   // SearchFunction is invoke immediately after the component is mounted
@@ -27,7 +28,8 @@ class App extends Component {
     axios.get(`${process.env.REACT_APP_FLICKR_URL}search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then((response) => {
       this.setState({
-        photos: response.data.photos.photo
+        photos: response.data.photos.photo,
+        query: query
       })
     })
     .catch(error => {
@@ -38,16 +40,16 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <div className="container">
-        <SearchForm onSearch={this.searchFunction}/>
-        <Nav />
-        <div className="photo-container">
-        <h2>Results</h2>
-        <ul>
-          <ContainerPhotos data={this.state.photos}/>
-        </ul>
+        <div className="container">
+          <SearchForm onSearch={this.searchFunction}/>
+          <Nav onClick={this.searchFunction}/>
+
+          <Switch>
+            <Route exact path="/" render={ () => < ContainerPhotos data={this.state.photos} />} />
+          </Switch>
+
+
         </div>
-      </div>
       </BrowserRouter>
     );
   }
