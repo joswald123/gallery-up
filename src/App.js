@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //pgk
 import axios from 'axios';
@@ -14,7 +14,8 @@ class App extends Component {
   
   state = {
     photos: [],
-    query: ""
+    query: '',
+    loading: true
   }
  
   // SearchFunction is invoke immediately after the component is mounted
@@ -29,24 +30,32 @@ class App extends Component {
     .then((response) => {
       this.setState({
         photos: response.data.photos.photo,
-        query: query
+        query: query,
+        loading: false
       })
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error);
     })
   }
-
+  
   render() {
+    
+    if(this.state.loading){
+      return <h1>Loading....</h1>
+    }
+    
     return (
       <BrowserRouter>
         <div className="container">
           <SearchForm onSearch={this.searchFunction}/>
-          <Nav onClick={this.searchFunction}/>
+          <Nav onSearch={this.searchFunction}/>
 
+          
           <Switch>
-            <Route exact path="/" render={ () => < ContainerPhotos data={this.state.photos} />} />
-            <Route exact path="/" render={ () => < ContainerPhotos data={this.state.photos} />} />
+            <Route exact path="/" render={ () => <ContainerPhotos data={this.state.photos} query={this.state.query}/>} />
+            <Route exact path="/search/:keyword" render={ () => <ContainerPhotos data={this.state.photos} query={this.state.query}/>} />
+            <Route exact path={this.state.query} render={ () => <ContainerPhotos data={this.state.photos} query={this.state.query}/>} />
           </Switch>
 
 
