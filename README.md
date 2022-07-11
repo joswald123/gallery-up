@@ -7,9 +7,9 @@ Gallery app by topics built as a single modern page application, modular, and in
 1. Background-Linear gradient.
 
 
-![Page Screen](../gallery-app/public/images/homePage.png)
+![Page Screen](/public/images/homePage.png)
 
-![Page Screen](../gallery-app/public/images/homePage.png)
+![Page Screen](/public/images/homePage.png)
 
 
 ### Quick Start
