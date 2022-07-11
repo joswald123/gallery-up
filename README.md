@@ -1,3 +1,24 @@
+# React Gallery App
+React | JavaScript | JSX | CSS | NODE | API | MVC
+
+Gallery app by topics built as a single modern page application, modular, and in sync with current web development trends.
+
+### CSS Changes
+1. Background-Linear gradient.
+
+
+![Page Screen](../gallery-app/public/images/homePage.png)
+
+![Page Screen](../gallery-app/public/images/homePage.png)
+
+
+### Quick Start
+1. Clone the repo-https://github.com/joswald123/gallery-up.git
+2. Go to your project folder.
+3. Open the terminal and run the app "npm start"
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

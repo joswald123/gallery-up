@@ -2,6 +2,7 @@ body {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   color: #3f4850;
+  background-image: linear-gradient(to right top, #9b89b3, #af9cc0, #c2b0ce, #d5c5dc, #e7daeb, #f0e3f0, #f8ecf5, #fff5fb, #fff4f6, #fff5ec, #fff8e3, #fefedf);
 }
 
 h2 {
