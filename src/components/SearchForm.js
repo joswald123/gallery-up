@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 
 class SearchForm extends Component {
-
+  // Initial state
   state = {
     searchText: ''
   }
-
+  // Grabbing the value of our input to change our initial state
   onSearchChange = e => {
     this.setState({ searchText: e.target.value})
   }
 
+  // Passing props (word) to our parent component to perform our search function 
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSearch(this.query.value);

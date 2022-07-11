@@ -1,21 +1,17 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 
 // Components
 import NotFound from './NotFound';
 import Photo from './Photo';
 
 const ContainerPhotos = (props) => {
-
+    // Passing props from parent component app to the photo component child
     let photos = props.data;
     let query = props.query
     if(photos.length > 0) {
         return <Photo photos={photos} query={query}/>
     }
-    return <NotFound />
-    
-
-
+    return <NotFound />    
 }
 
 export default ContainerPhotos;
