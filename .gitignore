@@ -18,7 +18,8 @@
 .env.test.local
 .env.production.local
 .env
-config.js
+#keys
+/src/config.js 
 
 npm-debug.log*
 yarn-debug.log*
