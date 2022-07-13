@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // Axios pgk
 import axios from 'axios';
 
+// Api Key
+import apiKey from './config';
+
 // Components
 import Nav from './components/Nav'
 import SearchForm from './components/SearchForm';
@@ -26,8 +29,7 @@ class App extends Component {
 
   // Fetching the data when the search function is performed
   searchFunction = (query = "flower") => {
-    const apiKey = process.env.REACT_APP_FLICKR_KEY
-    axios.get(`${process.env.REACT_APP_FLICKR_URL}search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then((response) => {
       this.setState({
         photos: response.data.photos.photo,
